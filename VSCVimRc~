@@ -434,8 +434,5 @@
         "statusBar.noFolderBackground": "#B48EAD",
         "statusBar.debuggingBackground": "#B48EAD"
     },
-    "editor.multiCursorModifier": "ctrlCmd",
-    "vim.debug.silent": true,
-    "vim.cursorStylePerMode.normal": "block-outline",
-    "background.useDefault": false
+    "editor.multiCursorModifier": "ctrlCmd"
 }
