@@ -1,0 +1,438 @@
+{
+    "explorer.confirmDelete": true,
+    "files.autoSave": "afterDelay",
+    "python.linting.flake8Enabled": true,
+    "python.pythonPath": "/usr/local/opt/python/bin/python3.7",
+    "python.linting.mypyEnabled": true,
+    "python.linting.pep8Enabled": true,
+    "python.linting.prospectorEnabled": true,
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.pylamaEnabled": true,
+    "files.autoGuessEncoding": true,
+    "team.showWelcomeMessage": false,
+    "workbench.editor.closeOnFileDelete": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "editor.minimap.enabled": false,
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "C_Cpp.updateChannel": "Insiders",
+    "[jsonc]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "[javascript]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "markdown-pdf.displayHeaderFooter": false,
+    "markdown-pdf.emoji": false,
+    "editor.wordWrap": "wordWrapColumn",
+    "workbench.colorTheme": "Monokai",
+
+    /* vim scene*/
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
+    "vim.statusBarColors.insert": "#BF616A",
+    "vim.statusBarColors.visual": "#B48EAD",
+    "vim.statusBarColors.visualline": "#B48EAD",
+    "vim.statusBarColors.visualblock": "#A3BE8C",
+    "vim.statusBarColors.replace": "#D08770",
+    "vim.easymotion": true,
+    "vim.sneak": false,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.smartcase": true,
+    "vim.leader": ";",
+
+    /* insert 模式 */
+    "vim.insertModeKeyBindingsNonRecursive": [{
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }, // 离开插入模式
+        {
+            "before": ["j", "j"],
+            "after": ["<C-o>"]
+        }, // 暂时离开插入模式
+        {
+            "before": ["g", "j"],
+            "after": ["<esc>", "leader", "<leader>", "/"]
+        }, // 快速跳转;
+        {
+            "before": ["<leader>", "<Cr>"],
+            "after": ["<Esc>", "A", ";", "<Cr>"]
+        }, // 行尾加;并换行
+        {
+            "before": ["<leader>", ","],
+            "after": ["<Esc>", "A", ",", "Cr"]
+        }, // 行尾加,并换行
+        {
+            "before": ["<leader>", ";"],
+            "after": ["<Esc>", "A", ";"]
+        }, // 行尾加;
+        {
+            "before": ["<leader>", "\""],
+            "after": ["<Esc>", "v", "i", "w", "<Esc>", "a", "\"", "<Esc>", "h", "b", "i", "\"", "<Esc>", "l", "E", "a"],
+        }, // 给一个单词加"
+        {
+            "before": ["<leader>", "'"],
+            "after": ["<Esc>", "v", "i", "w", "<Esc>", "a", "'", "<Esc>", "h", "b", "i", "'", "<Esc>", "l", "E", "a"],
+        }, // 给一个单词加'
+        {
+            "before": ["<leader>", "("],
+            "after": ["<Esc>", "A", ")", "<Esc>", "I", "(", "<Esc>", "I"],
+        }, // 给当前行加()
+        /*
+        * CALL action
+        */
+        // ================
+        //      OPEN
+        // ================
+        {
+            "before": ["<leader>", "o", "f"],
+            "commands": ["workbench.action.quickOpen"]
+        }, // 打开文件
+        {
+            "before": ["<leader>", "o", "t"],
+            "commands": ["terminal.open"]
+        }, // 打开终端
+        {
+            "before": ["<leader>", "o", "F"],
+            "commands": ["revealFileInOS"]
+        }, // 在finder中打开
+        {
+            "before":["<leader>", "o", "c"],
+            "commands":["C_Cpp.SwitchHeaderSource"]
+        },// 切换c/h文件
+
+        // ================
+        //      else
+        // ================
+        {
+            "before": ["<leader>", "/"],
+            "commands": ["editor.action.commentLine"]
+        }, // 行注释
+        {
+            "before":["<leader>","c", "a"],
+            "commands":["editor.action.changeAll"]
+        }, // 选择全部匹配项
+        // ================
+        //      Go
+        // ================
+        {
+            "before": ["g", "i"],
+            "commands": ["editor.action.revealDefinition"]
+        }, // 跳转到实现
+        {
+            "before": ["g", "r"],
+            "commands": ["editor.action.marker.nextInFiles"]
+        }, // 跳转到下个错误
+        {
+            "before": ["g", "R"],
+            "commands": ["editor.action.marker.prevInFiles"]
+        }, // 跳转到上个错误
+        // ================
+        //      Re
+        // ================
+        {
+        "before": ["<leader>", "r", "f"],
+        "after": ["<esc>","m", "f", "g", "g", "v", "G", "=", "=", "`", "f", "`", "f"]
+        }, // 整理格式
+        {
+            "before":["<leader>", "r", "n"],
+            "commands":["editor.action.rename"]
+        }, // 重命名
+        // ================
+        //      Set
+        // ================
+        {
+            "before":["<leader>","s","x"],
+            "commands":[":noh"]
+        }, // 取消高亮
+        {
+            "before":["<leader>", "s", "b"],
+            "commands":["editor.debug.action.toggleBreakpoint"]
+        }, // 设置断点
+        {
+            "before":["<leader>", "s", "m"],
+            "commands":["bookmarks.toggle"],
+        },
+        // ================
+        //      View
+        // ================
+        {
+            "before":["<leader>", "v", "r"],
+            "commands":["editor.action.referenceSearch.trigger"]
+        }, // 查看引用
+        {
+            "before":["<leader>", "v", "m"],
+            "commands":["bookmarks.listFromAllFiles"]
+        }, // 书签
+        {
+            "before":["<leader>", "v", "i"],
+            "commands":["editor.action.peekDefinition"]
+        }, // 查看定义
+        {
+            "before":["<leader>", "v", "s"],
+            "commands":["editor.showCallHierarchy"]
+        }, // 无用
+        {
+            "before":["<leader>", "v", "i"],
+            "after": ["<esc>","g", "h"]
+        }, // 查看信息
+        {
+            "before":["<leader>", "v", "p"],
+            "commands":["editor.action.triggerParameterHints"]
+        }, // 查看参数
+        // ================
+        //      Do
+        // ================
+        {
+            "before":["<leader>", "d", "d"],
+            "commands":["extension.node-debug.startWithStopOnEntry"]
+        }, // debug
+        {
+            "before":["<leader>", "d", "r"],
+            "commands":["workbench.action.tasks.runTask"]
+        }, // run
+        {
+            "before":["<leader>", "d", "b"],
+            "commands":["workbench.action.tasks.build"]
+        }, // build
+        {
+            "before":["<leader>", "d", "l"],
+            "commands":["editor.action.triggerSuggest"]
+        }, // template
+
+
+    ],
+    /* normal 模式 */
+    "vim.normalModeKeyBindingsNonRecursive": [{
+                "before": ["<Space>"],
+                "after": ["1", "5", "j"]
+            }, // 快速移动
+            {
+                "before": ["<leader>", "<Space>"],
+                "after": ["1", "5", "k"]
+            }, // 快速移动
+            {
+                "before": ["g", "j"],
+                "after": ["leader", "<leader>", "/"]
+            }, // 快速跳转
+            {
+                "before": ["U"],
+                "after": ["<C-r>"]
+            }, // Redo
+            {
+                "before": ["H"],
+                "after": ["^"]
+            }, // 移至行首
+            {
+                "before": ["L"],
+                "after": ["$"]
+            }, // 移动至行尾
+            {
+                "before'": ["<leader>", "\""],
+                "after": ["v", "i", "w", "<Esc>", "a", "\"", "<Esc>", "h", "b", "i", "\"", "<Esc>", "l", "E"],
+            }, // 给一个单词加"
+            {
+                "before": ["<leader>", "'"],
+                "after": ["<Esc>", "v", "i", "w", "<Esc>", "a", "'", "<Esc>", "h", "b", "i", "'", "<Esc>", "l", "E"],
+            }, // 给一个单词加'
+            {
+                "before": ["<leader>", "("],
+                "after": ["<Esc>", "A", ")", "<Esc>", "I", "(", "<Esc>"],
+            }, // 给当前行加()
+            {
+                "before": ["g", "["],
+                "after": ["<C-o>"]
+            }, // 上个位置
+            {
+                "before": ["g", "]"],
+                "after": ["<C-i>"]
+            }, // 下个位置
+            {
+                "before": ["g", "w"],
+                "after": ["g", "b"]
+            }, // 多光标模式
+
+            /* windows */
+            {
+                "before": ["<leader>", "w", "w"],
+                "after": ["<C-w>", "w"]
+            }, // 窗口切换
+            {
+                "before": ["<leader>", "w", "h"],
+                "after": ["<C-w>", "h"]
+            }, // 窗口切换
+            {
+                "before": ["<leader>", "w", "l"],
+                "after": ["<C-w>", "l"]
+            }, // 窗口切换
+            {
+                "before": ["<leader>", "w", "k"],
+                "after": ["<C-w>", "k"]
+            }, // 窗口切换
+            {
+                "before": ["<leader>", "w", "j"],
+                "after": ["<C-w>", "j"]
+            }, // 窗口切换
+            {
+                "before": ["<leader>", "w", "c"],
+                "after": ["<C-w>", "c"]
+            }, // 窗口切换
+            {
+                "before": ["<leader>", "w", "s"],
+                "after": ["<C-w>", "s"]
+            }, // 窗口切换
+            {
+                "before": ["<leader>", "w", "v"],
+                "after": ["<C-w>", "v"]
+            }, // 窗口切换
+
+            /*
+            * CALL action
+            */
+            // ================
+            //      OPEN
+            // ================
+            {
+                "before": ["<leader>", "o", "f"],
+                "commands": ["workbench.action.quickOpen"]
+            }, // 打开文件
+            {
+                "before": ["<leader>", "o", "t"],
+                "commands": ["terminal.open"]
+            }, // 打开终端
+            {
+                "before": ["<leader>", "o", "F"],
+                "commands": ["revealFileInOS"]
+            }, // 在finder中打开
+            {
+                "before":["<leader>", "o", "c"],
+                "commands":["C_Cpp.SwitchHeaderSource"]
+            },// 切换c/h文件
+
+            // ================
+            //      else
+            // ================
+            {
+                "before": ["<leader>", "/"],
+                "commands": ["editor.action.commentLine"]
+            }, // 行注释
+            {
+                "before":["<leader>","c", "a"],
+                "commands":["editor.action.changeAll"]
+            }, // 选择全部匹配项
+            // ================
+            //      Go
+            // ================
+            {
+                "before": ["g", "i"],
+                "commands": ["editor.action.revealDefinition"]
+            }, // 跳转到实现
+            {
+                "before": ["g", "r"],
+                "commands": ["editor.action.marker.nextInFiles"]
+            }, // 跳转到下个错误
+            {
+                "before": ["g", "R"],
+                "commands": ["editor.action.marker.prevInFiles"]
+            }, // 跳转到上个错误
+            // ================
+            //      Re
+            // ================
+            {
+                "before": ["<leader>", "r", "f"],
+                "after": ["m", "f", "g", "g", "v", "G", "=", "=", "`", "f", "`", "f"]
+            }, // 整理格式
+            {
+                "before":["<leader>", "r", "n"],
+                "commands":["editor.action.rename"]
+            }, // 重命名
+            // ================
+            //      Set
+            // ================
+            {
+                "before":["<leader>","s","x"],
+                "commands":[":noh"]
+            }, // 取消高亮
+            {
+                "before":["<leader>", "s", "b"],
+                "commands":["editor.debug.action.toggleBreakpoint"]
+            }, // 设置断点
+            {
+                "before":["<leader>", "s", "m"],
+                "commands":["bookmarks.toggle"],
+            },
+            // ================
+            //      View
+            // ================
+            {
+                "before":["<leader>", "v", "r"],
+                "commands":["editor.action.referenceSearch.trigger"]
+            }, // 查看引用
+            {
+                "before":["<leader>", "v", "m"],
+                "commands":["bookmarks.listFromAllFiles"]
+            }, // 书签
+            {
+                "before":["<leader>", "v", "i"],
+                "commands":["editor.action.peekDefinition"]
+            }, // 查看定义
+            {
+                "before":["<leader>", "v", "s"],
+                "commands":["editor.showCallHierarchy"]
+            }, // 无用
+            {
+                "before":["<leader>", "v", "i"],
+                "after": ["g", "h"]
+            }, // 查看信息
+            {
+                "before":["<leader>", "v", "p"],
+                "commands":["editor.action.triggerParameterHints"]
+            }, // 查看参数
+            // ================
+            //      Do
+            // ================
+            {
+                "before":["<leader>", "d", "d"],
+                "commands":["extension.node-debug.startWithStopOnEntry"]
+            }, // debug
+            {
+                "before":["<leader>", "d", "r"],
+                "commands":["workbench.action.tasks.runTask"]
+            }, // run
+            {
+                "before":["<leader>", "d", "b"],
+                "commands":["workbench.action.tasks.build"]
+            }, // build
+            {
+                "before":["<leader>", "d", "l"],
+                "commands":["editor.action.triggerSuggest"]
+            }, // template
+
+    ],
+    /* visual模式 */
+    "vim.visualModeKeyBindingsNonRecursive": [{
+            "before": ["g", "w"],
+            "after": ["g", "b"]
+        }, // 多光标
+        {
+            "before": ["<leader>", "/"],
+            "commands": ["editor.action.blockComment"]
+
+        }
+    ],
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#B48EAD",
+        "statusBar.noFolderBackground": "#B48EAD",
+        "statusBar.debuggingBackground": "#B48EAD"
+    },
+    "editor.multiCursorModifier": "ctrlCmd"
+}

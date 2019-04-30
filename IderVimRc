@@ -1,0 +1,217 @@
+" Set some scene
+set number
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+set so = 5
+set surround
+set multiple-cursors
+set laststatus=2
+
+" Set Leader
+let mapleader = ";"
+
+" Quit insert mode
+inoremap jk <Esc>
+
+" Insert mode temp exit
+inoremap jj <C-o>
+
+" Quit visual mode
+vnoremap v  <Esc>
+
+" Redo
+nnoremap U <C-r>
+
+" add ; to the end of line and go to next line
+inoremap <leader><Cr> <Esc>A;<Cr>
+
+" add ; to the end of line
+inoremap <leader>; <Esc>A;
+
+" add , to the end of line and go to next line
+inoremap <leader>, <Esc>A,<Cr>
+
+" add () to the while line 
+inoremap <leader>( <Esc>A)<Esc>I(<Esc>I
+
+" add " to a word
+inoremap <leader>" <Esc>viw<Esc>a"<Esc>hbi"<Esc>lEa
+nnoremap <leader>" viw<Esc>a"<Esc>hbi"<Esc>lEa
+
+" add ' to a word
+inoremap <leader>' <Esc>viw<Esc>a'<Esc>hbi'<Esc>lEa
+nnoremap <leader>' viw<Esc>a'<Esc>hbi'<Esc>lEa
+
+" Move faster
+nnoremap <Space> 10j
+nnoremap <leader><Space> 10k
+
+" Back
+nnoremap g[ <C-o>
+
+" Forward
+nnoremap g] <C-i>
+
+" noh
+nnoremap <leader>sx :noh<Cr>
+
+" Move to the start of line
+nnoremap H ^
+
+" Move to the end of line
+nnoremap L $
+
+" Change window
+nnoremap <leader>ww <C-w>w
+nnoremap <leader>wc <C-w>c
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wl <C-w>l
+nnoremap <leader>ws <C-w>s
+nnoremap <leader>wv <C-w>v
+
+"==========================================
+"               Call actions
+" =========================================
+
+" Comment
+vnoremap <leader>/ :action CommentByBlockComment<Cr>
+nnoremap <leader>/ :action CommentByLineComment<Cr>
+
+" ================
+"      Select
+" ================
+
+" Select
+nnoremap <leader>u :action SmartSelect<Cr>
+vnoremap <leader>u :action SmaerSelect<Cr>
+
+" UnSelect
+nnoremap <leader>U :action SmartUnSelect<Cr>
+vnoremap <leader>U :action SmartUnSelect<Cr>
+
+" mult all cur
+nnoremap <leader>ca :action SelectAllOccurrences<Cr>
+inoremap <leader>ca <Esc>:action SelectAllOccurrences<Cr>
+
+" ================
+"     Open
+" ================
+
+" Recent files
+nnoremap <leader>of :action RecentFiles<Cr>
+inoremap <leader>of <Esc>:action RecentFiles<Cr>
+
+" Termina
+nnoremap <leader>ot :action ActivateTerminalToolWindow<Cr>
+inoremap <leader>ot <Esc>:action ActivateTerminalToolWindow<Cr>
+
+" Finder
+nnoremap <leader>oF :action RevealIn<Cr>
+inoremap <leader>oF <Esc>:action RevealIn<Cr>
+
+" ================
+"      Go
+" ================
+
+" Implement
+nnoremap gi :action GotoImplementation<Cr>
+inoremap gi <Esc>:action GotoImplementation<Cr>
+
+" Jumlisp
+nnoremap gj :action AceAction<Cr>
+inoremap gj <Esc>:action AceAction<Cr>
+
+" Previous error
+nnoremap gR :action GotoPreviousError<Cr>
+inoremap gR <Esc>:action GotoPreviousError<Cr>
+
+" Next error
+nnoremap gr :action GotoNextError<Cr>
+inoremap gr <Esc>:action GotoNextError<Cr>
+
+" next cur
+nnoremap gw :action SelectNextOccurrence<Cr>
+inoremap gw <Esc>:action SelectNextOccurrence<Cr>
+
+" ================
+"       Re
+" ================
+
+" ReformatCode
+nnoremap <leader>rf :action ReformatCode <Cr>
+inoremap <leader>rf <Esc>:action ReformatCode <Cr>
+
+" ReName
+nnoremap <leader>rn :action RenameElement<Cr>
+
+" Repalce
+nnoremap <leader>rt :action $TranslateAndReplaceAction<Cr>
+inoremap <leader>rt <Esc>:action $TranslateAndReplaceAction<Cr>
+
+" ==================
+"        Set
+" ==================
+
+" Breakpoint
+nnoremap <leader>sb :action ToggleLineBreakpoint<Cr>
+
+" ================
+"      View
+" ================
+
+" Breakpoint
+nnoremap <leader>vb :action ViewBreakpoints<Cr>
+
+" Usages
+nnoremap <leader>vu :action FindUsages<Cr>
+inoremap <leader>vu <Esc>:action FindUsages<Cr>
+
+" Translation
+nnoremap <leader>vt :action $ShowTranslationDialogAction<Cr>
+inoremap <leader>vt <Esc>:action $ShowTranslationDialogAction<Cr>
+
+" MarkBooks
+nnoremap <leader>vm :marks<Cr>
+inoremap <leader>vm <Esc>:marks<Cr>
+
+" Method list
+nnoremap <leader>vs :action ActivateStructureToolWindow<Cr>
+inoremap <leader>vs <Esc>:action ActivateStructureToolWindow<Cr>
+
+" Quick Info
+nnoremap <leader>vi :action QuickJavaDoc<Cr>
+inoremap <leader>vi <Esc>:action QuickJavaDoc<Cr>
+
+" Parameter
+nnoremap <leader>vp :action ParameterInfo<Cr>
+inoremap <leader>vp <Esc>:action ParameterInfo<Cr>
+
+" ==================
+"       Do
+" ==================
+
+" Debug
+nnoremap <leader>dd :action Debug<Cr>
+
+" Generate
+nnoremap <leader>dg :action Generate<Cr>
+inoremap <leader>dg <Esc>:action Generate<Cr>
+
+" Run
+nnoremap <leader>dr :action Run<Cr>
+
+" Build
+nnoremap <leader>db :action Build<Cr>
+
+" Definition
+nnoremap <leader>di :action CIDR.Lang.Cpp.GenerateDefinitions<Cr>
+inoremap <leader>di <Esc>:action CIDR.Lang.Cpp.GenerateDefinitions<Cr>
+
+" Live template
+nnoremap <leader>dl :action InsertLiveTemplate<Cr>
+inoremap <leader>dl <Esc>:action InsertLiveTemplate<Cr>
+
