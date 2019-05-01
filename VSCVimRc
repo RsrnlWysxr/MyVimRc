@@ -12,7 +12,7 @@
     "team.showWelcomeMessage": false,
     "workbench.editor.closeOnFileDelete": true,
     "latex-workshop.view.pdf.viewer": "tab",
-    "editor.minimap.enabled": false,
+    "editor.minimap.enabled": true,
     "latex-workshop.latex.autoClean.run": "onBuilt",
     "C_Cpp.updateChannel": "Insiders",
     "[jsonc]": {
@@ -31,16 +31,16 @@
     "markdown-pdf.displayHeaderFooter": false,
     "markdown-pdf.emoji": false,
     "editor.wordWrap": "wordWrapColumn",
-    "workbench.colorTheme": "Monokai",
+    "workbench.colorTheme": "Dracula",
 
     /* vim scene*/
-    "vim.statusBarColorControl": true,
+/*     "vim.statusBarColorControl": true,
     "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
     "vim.statusBarColors.insert": "#BF616A",
     "vim.statusBarColors.visual": "#B48EAD",
     "vim.statusBarColors.visualline": "#B48EAD",
     "vim.statusBarColors.visualblock": "#A3BE8C",
-    "vim.statusBarColors.replace": "#D08770",
+    "vim.statusBarColors.replace": "#D08770", */
     "vim.easymotion": true,
     "vim.sneak": false,
     "vim.incsearch": true,
@@ -141,12 +141,16 @@
         // ================
         {
         "before": ["<leader>", "r", "f"],
-        "after": ["<esc>","m", "f", "g", "g", "v", "G", "=", "=", "`", "f", "`", "f"]
+        "commands":["editor.action.formatDocument"]
         }, // 整理格式
         {
             "before":["<leader>", "r", "n"],
             "commands":["editor.action.rename"]
         }, // 重命名
+        {
+            "before":["<leader>", "r", "a"],
+            "commands":["wwm.aligncode"],
+        }, // 代码对齐
         // ================
         //      Set
         // ================
@@ -200,6 +204,10 @@
             "before":["<leader>", "d", "r"],
             "commands":["workbench.action.tasks.runTask"]
         }, // run
+        {
+            "before":["<leader>", "d", "c"],
+            "commands":["code-runner.run"]
+        }, // run code
         {
             "before":["<leader>", "d", "b"],
             "commands":["workbench.action.tasks.build"]
@@ -299,14 +307,14 @@
             * CALL action
             */
             // ================
-            //      OPEN
+            //      OPEN/CLOSE
             // ================
             {
                 "before": ["<leader>", "o", "f"],
                 "commands": ["workbench.action.quickOpen"]
             }, // 打开文件
             {
-                "before": ["<leader>", "o", "t"],
+                "before"  : ["<leader>", "o", "t"],
                 "commands": ["terminal.open"]
             }, // 打开终端
             {
@@ -317,6 +325,16 @@
                 "before":["<leader>", "o", "c"],
                 "commands":["C_Cpp.SwitchHeaderSource"]
             },// 切换c/h文件
+            {
+                "before":["<leader>", "o", "v"],
+                "commands":["workbench.action.openView"]
+            },// 打开视口
+            /*
+                meta + 1 编辑区
+                meta + 2 侧边栏
+                meta + 3 下面板
+                meta + 4 结构
+            */
 
             // ================
             //      else
@@ -349,12 +367,16 @@
             // ================
             {
                 "before": ["<leader>", "r", "f"],
-                "after": ["m", "f", "g", "g", "v", "G", "=", "=", "`", "f", "`", "f"]
+                "commands":["editor.action.formatDocument"]
             }, // 整理格式
             {
                 "before":["<leader>", "r", "n"],
                 "commands":["editor.action.rename"]
             }, // 重命名
+                {
+                "before":["<leader>", "r", "a"],
+                "commands":["wwm.aligncode"],
+            }, // 代码对齐
             // ================
             //      Set
             // ================
@@ -374,6 +396,10 @@
             //      View
             // ================
             {
+                "before":["<leader>", "v", "b"],
+                "commands":["extension.viewInBrowser"]
+            }, // 查看网页
+            {
                 "before":["<leader>", "v", "r"],
                 "commands":["editor.action.referenceSearch.trigger"]
             }, // 查看引用
@@ -383,7 +409,7 @@
             }, // 书签
             {
                 "before":["<leader>", "v", "i"],
-                "commands":["editor.action.peekDefinition"]
+                "commands":["editor.action.peekDefinition", ""]
             }, // 查看定义
             {
                 "before":["<leader>", "v", "s"],
@@ -409,6 +435,10 @@
                 "commands":["workbench.action.tasks.runTask"]
             }, // run
             {
+                "before":["<leader>", "d", "c"],
+                "commands":["code-runner.run"]
+            }, // run code
+            {
                 "before":["<leader>", "d", "b"],
                 "commands":["workbench.action.tasks.build"]
             }, // build
@@ -426,16 +456,70 @@
         {
             "before": ["<leader>", "/"],
             "commands": ["editor.action.blockComment"]
-
-        }
+        }, // 注释
+        {
+            "before":["<leader>", "r", "a"],
+            "commands":["wwm.aligncode"],
+        }, // 代码对齐
     ],
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#B48EAD",
-        "statusBar.noFolderBackground": "#B48EAD",
-        "statusBar.debuggingBackground": "#B48EAD"
-    },
     "editor.multiCursorModifier": "ctrlCmd",
     "vim.debug.silent": true,
     "vim.cursorStylePerMode.normal": "block-outline",
-    "background.useDefault": false
+    "workbench.statusBar.feedback.visible": false,
+    "backgroundCover.opacity": 0.25,
+    "backgroundCover.imagePath": "/Users/liyihang/Pictures/backgorund/background.jpg",
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.executorMap": {
+        "javascript": "node",
+        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && g++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "php": "php",
+        "python": "python -u",
+        "perl": "perl",
+        "perl6": "perl6",
+        "ruby": "ruby",
+        "go": "go run",
+        "lua": "lua",
+        "groovy": "groovy",
+        "powershell": "powershell -ExecutionPolicy ByPass -File",
+        "bat": "cmd /c",
+        "shellscript": "bash",
+        "fsharp": "fsi",
+        "csharp": "scriptcs",
+        "vbscript": "cscript //Nologo",
+        "typescript": "ts-node",
+        "coffeescript": "coffee",
+        "scala": "scala",
+        "swift": "swift",
+        "julia": "julia",
+        "crystal": "crystal",
+        "ocaml": "ocaml",
+        "r": "Rscript",
+        "applescript": "osascript",
+        "clojure": "lein exec",
+        "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+        "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+        "racket": "racket",
+        "ahk": "autohotkey",
+        "autoit": "autoit3",
+        "dart": "dart",
+        "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+        "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+        "haskell": "runhaskell",
+        "nim": "nim compile --verbosity:0 --hints:off --run",
+        "lisp": "sbcl --script",
+        "kit": "kitc --run"
+    },
+    "workbench.sideBar.location": "left",
+    "breadcrumbs.enabled": true,
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": false
+/*     "workbench.colorCustomizations": {
+        "statusBar.background": "#B48EAD",
+        "statusBar.noFolderBackground": "#B48EAD",
+        "statusBar.debuggingBackground": "#B48EAD"
+    }, */
 }
+
